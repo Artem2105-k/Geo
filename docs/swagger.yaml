@@ -1,0 +1,219 @@
+basePath: /api
+definitions:
+  auth.ErrorResponse:
+    properties:
+      error:
+        description: |-
+          Описание ошибки
+          example: user not found
+        type: string
+    type: object
+  auth.LoginRequest:
+    properties:
+      password:
+        description: |-
+          Пароль
+          required: true
+          example: password123
+        type: string
+      username:
+        description: |-
+          Имя пользователя
+          required: true
+          example: admin
+        type: string
+    type: object
+  auth.LoginResponse:
+    properties:
+      token:
+        description: |-
+          JWT токен
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        type: string
+    type: object
+  auth.RegisterRequest:
+    properties:
+      password:
+        description: |-
+          Пароль
+          required: true
+          example: password123
+        type: string
+      username:
+        description: |-
+          Имя пользователя
+          required: true
+          example: admin
+        type: string
+    type: object
+  controller.AddressResponse:
+    properties:
+      addresses:
+        items:
+          $ref: '#/definitions/service.Address'
+        type: array
+    type: object
+  controller.GeocodeRequest:
+    properties:
+      lat:
+        type: string
+      lng:
+        type: string
+    type: object
+  controller.SearchRequest:
+    properties:
+      query:
+        type: string
+    type: object
+  models.ErrorResponse:
+    properties:
+      error:
+        description: |-
+          Описание ошибки
+          example: something went wrong
+        type: string
+    type: object
+  service.Address:
+    properties:
+      city:
+        type: string
+      house:
+        type: string
+      lat:
+        type: string
+      lon:
+        type: string
+      street:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: API для поиска адресов и геокодирования
+  title: Geo Service API
+  version: "1.0"
+paths:
+  /api/address/geocode:
+    post:
+      consumes:
+      - application/json
+      description: Поиск адреса по координатам
+      parameters:
+      - description: Координаты
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/controller.GeocodeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.AddressResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Геокодирование
+      tags:
+      - address
+  /api/address/search:
+    post:
+      consumes:
+      - application/json
+      description: Поиск адресов по строке запроса
+      parameters:
+      - description: Поисковый запрос
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/controller.SearchRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.AddressResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Поиск адреса
+      tags:
+      - address
+  /api/login:
+    post:
+      consumes:
+      - application/json
+      description: Аутентифицирует пользователя и возвращает JWT токен
+      parameters:
+      - description: Учетные данные
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/auth.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth.LoginResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/auth.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/auth.ErrorResponse'
+      summary: Вход пользователя
+      tags:
+      - auth
+  /api/register:
+    post:
+      consumes:
+      - application/json
+      description: Создает нового пользователя в системе
+      parameters:
+      - description: Данные пользователя
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/auth.RegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/auth.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/auth.ErrorResponse'
+      summary: Регистрация пользователя
+      tags:
+      - auth
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
