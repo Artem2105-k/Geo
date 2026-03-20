@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
-	"studentgit.kata.academy/ar.konovalov202_gmail.com/rpc/dadata"
-	"studentgit.kata.academy/ar.konovalov202_gmail.com/rpc/rpcserver"
+	"ar.konovalov202_gmail.com/rpc/dadata"
+	"ar.konovalov202_gmail.com/rpc/rpcserver"
 )
 
 func main() {

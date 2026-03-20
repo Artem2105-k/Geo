@@ -8,7 +8,7 @@ import (
 	"net/rpc"
 	"net/rpc/jsonrpc"
 
-	"studentgit.kata.academy/ar.konovalov202_gmail.com/rpc/general"
+	"ar.konovalov202_gmail.com/rpc/general"
 )
 
 func StartRpcServer(geoSer general.GeoProvider) {

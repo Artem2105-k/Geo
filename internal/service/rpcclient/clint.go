@@ -6,7 +6,7 @@ import (
 	"net/rpc"
 	"net/rpc/jsonrpc"
 
-	"studentgit.kata.academy/ar.konovalov202_gmail.com/rpc/general"
+	"ar.konovalov202_gmail.com/rpc/general"
 )
 
 var ErrConnectionFailed = errors.New("connection failed")

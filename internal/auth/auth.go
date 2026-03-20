@@ -6,10 +6,10 @@ import (
 	"sync"
 	"time"
 
+	"ar.konovalov202_gmail.com/rpc/internal/models"
 	"github.com/go-chi/jwtauth/v5"
 	"github.com/go-chi/render"
 	"golang.org/x/crypto/bcrypt"
-	"studentgit.kata.academy/ar.konovalov202_gmail.com/rpc/internal/models"
 )
 
 var (

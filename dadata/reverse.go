@@ -4,9 +4,9 @@ import (
 	"context"
 	"net/url"
 
+	"ar.konovalov202_gmail.com/rpc/general"
 	"github.com/ekomobile/dadata/v2/api/suggest"
 	"github.com/ekomobile/dadata/v2/client"
-	"studentgit.kata.academy/ar.konovalov202_gmail.com/rpc/general"
 )
 
 var _ general.GeoProvider = (*Client)(nil)

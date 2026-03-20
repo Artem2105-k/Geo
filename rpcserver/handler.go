@@ -1,6 +1,6 @@
 package rpcserver
 
-import "studentgit.kata.academy/ar.konovalov202_gmail.com/rpc/general"
+import "ar.konovalov202_gmail.com/rpc/general"
 
 type RPCServer struct {
 	GeoSer general.GeoProvider

@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strings"
 
+	"ar.konovalov202_gmail.com/rpc/general"
+	"ar.konovalov202_gmail.com/rpc/internal/models"
 	"github.com/go-chi/render"
-	"studentgit.kata.academy/ar.konovalov202_gmail.com/rpc/general"
-	"studentgit.kata.academy/ar.konovalov202_gmail.com/rpc/internal/models"
 )
 
 type GeoController struct {

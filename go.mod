@@ -1,4 +1,4 @@
-module studentgit.kata.academy/ar.konovalov202_gmail.com/rpc
+module ar.konovalov202_gmail.com/rpc
 
 go 1.23.0
 

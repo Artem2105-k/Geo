@@ -9,9 +9,9 @@ import (
 	"github.com/go-chi/jwtauth/v5"
 	httpSwagger "github.com/swaggo/http-swagger"
 
-	"studentgit.kata.academy/ar.konovalov202_gmail.com/rpc/internal/auth"
-	"studentgit.kata.academy/ar.konovalov202_gmail.com/rpc/internal/controller"
-	"studentgit.kata.academy/ar.konovalov202_gmail.com/rpc/internal/service/rpcclient"
+	"ar.konovalov202_gmail.com/rpc/internal/auth"
+	"ar.konovalov202_gmail.com/rpc/internal/controller"
+	"ar.konovalov202_gmail.com/rpc/internal/service/rpcclient"
 )
 
 // @title Geo Service API
